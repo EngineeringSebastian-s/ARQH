@@ -28,3 +28,18 @@ class FileManager:
             print("El archivo ya existe")
         except Exception as e:
             print(f"Ocurrió un error inesperado: {e}")
+
+    def read_file_b(self, ext):
+        try:
+            with open(self.file_path + ext, "rb") as file:
+                return file.read()
+        except OSError or FileNotFoundError as e:
+            print("Error al leer el archivo:", e)
+        return ""
+
+    def write_file_b(self, content, ext):
+        try:
+            with open(self.file_path + ext, 'wb') as file:
+                file.write(content)
+        except OSError or FileNotFoundError as e:
+            print("Error al escribir en el archivo:", e)

@@ -1,6 +1,8 @@
 from Bean.Node import Node
 from graphviz import Digraph
 import os
+
+
 class HuffmanCoding:
     def __init__(self, content):
         self.content = content
@@ -49,11 +51,25 @@ class HuffmanCoding:
         return code
 
     def replace_codes(self, codes):
-        new_content= ""
+        new_content = ""
         for char in self.content:
             if char in codes:
-                new_content += chr(int(codes[char], 2))
+                new_content += codes[char]
         return new_content
+
+    def encoded(self,content):
+        ext_bit = 8 - len(content) & 8
+        for i in range(ext_bit):
+            content += "0"
+        format_bin = "{0:08b}".format(ext_bit)
+        content = format_bin + content
+        return content
+    def byte_array(self,content):
+        b = bytearray()
+        for i in range(0, len(content),8):
+            byte = content[i:(i+8)]
+            b.append(int(byte, 2))
+        return b
 
     def print_tree(self, node, indent=""):
         if node is not None:
@@ -79,4 +95,4 @@ class HuffmanCoding:
 
         graph = Digraph()
         add_nodes_edges(root, graph)
-        graph.render(os.path.join(os.getcwd(),"View", "huffman_tree"), format='png', view=True)
+        graph.render(os.path.join(os.getcwd(), "View", "huffman_tree"), format='png', view=True)
