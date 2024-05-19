@@ -29,7 +29,7 @@ class Compressor:
 
         # Escribir en nuevo archivo
         fm.write_file_b(new_content, new_ext)
-        print(codes)
+        print("Diccionario de codigos:\n", codes)
 
     def Descompress(self,filename,ext,new_ext):
         # Crea el Manejador de Archivos
@@ -45,8 +45,9 @@ class Compressor:
         #Invertir Diccionario
         dict_huffman = {v: k for k, v in dict_huffman.items()}
 
+        print("Diccionario inverso:\n", dict_huffman)
 
-        print(content)
+        print("Lectura en Binario:\n", content)
         # Recorrer contenido y reemplzar valores del diccionario
         decoded_string = ""
         buffer = ""
@@ -57,4 +58,4 @@ class Compressor:
                 buffer = ""
         decoded_string
 
-        print("Decoded string:", decoded_string)
+        print("Decodificación:\n", decoded_string)
