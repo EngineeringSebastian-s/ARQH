@@ -40,6 +40,6 @@ class FileManager:
     def write_file_b(self, content, ext):
         try:
             with open(self.file_path + ext, 'wb') as file:
-                file.write(content)
+                file.write(bytes(content))
         except OSError or FileNotFoundError as e:
             print("Error al escribir en el archivo:", e)
