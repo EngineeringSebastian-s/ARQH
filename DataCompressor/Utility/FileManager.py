@@ -8,7 +8,7 @@ class FileManager:
     def read_file(self, ext):
         try:
             with open(self.file_path + ext, "r", encoding='utf-8') as file:
-                return file.read().rstrip() # Elimina espacios final generados por el pointer de Python al usar read
+                return file.read()
         except OSError or FileNotFoundError as e:
             print("Error al leer el archivo:", e)
         return ""
