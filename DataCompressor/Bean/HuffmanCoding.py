@@ -57,8 +57,8 @@ class HuffmanCoding:
                 new_content += codes[char]
         return new_content
 
-    def encoded(self,content):
-        ext_bit = 8 - len(content) & 8
+    def encoded(self, content):
+        ext_bit = 8 - len(content) % 8 # Calcular la cantidad de bits faltantes
         for i in range(ext_bit):
             content += "0"
         format_bin = "{0:08b}".format(ext_bit)
