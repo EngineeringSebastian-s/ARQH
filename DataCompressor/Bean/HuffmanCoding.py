@@ -99,7 +99,7 @@ class HuffmanCoding:
     # Metodo de Descompresión
     def decode(self):
         decode_content = ""
-        for byte in self.content:
+        for byte in self.content[1:-1]:
             decode_content += f'{byte:08b}'
         self.content = decode_content
 
@@ -116,6 +116,27 @@ class HuffmanCoding:
                 decoded_string += self.codes[buffer]
                 buffer = ""
         self.content = decoded_string
+
+    def rebuild_tree(self):
+        binary_length_prefix = self.content[:32]
+        length_prefix = ''.join(
+            chr(int(binary_length_prefix[i:i + 8], 2)) for i in range(0, len(binary_length_prefix), 8))
+        tree_length = int(length_prefix)
+        binary_serialized_tree = self.content[32:32 + tree_length * 8]
+        serialized_tree = ''.join(
+            chr(int(binary_serialized_tree[i:i + 8], 2)) for i in range(0, len(binary_serialized_tree), 8))
+        self.tree = self.deserialize_tree(iter(serialized_tree))
+        self.content = self.content[32 + tree_length * 8:]
+
+    def deserialize_tree(self, data_iter):
+        val = next(data_iter)
+        if val == '1':
+            char = next(data_iter)
+            return Node(char, None)
+        node = Node(None, None)
+        node.left = self.deserialize_tree(data_iter)
+        node.right = self.deserialize_tree(data_iter)
+        return node
 
     # Metodos de Impresión
 
