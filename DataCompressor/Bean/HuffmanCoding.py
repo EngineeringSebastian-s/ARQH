@@ -1,8 +1,8 @@
-import struct
+import os
+
+from graphviz import Digraph
 
 from Bean.Node import Node
-from graphviz import Digraph
-import os
 
 
 class HuffmanCoding:

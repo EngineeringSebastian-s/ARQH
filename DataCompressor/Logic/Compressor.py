@@ -1,5 +1,5 @@
-from Utility import FileManager as Fm
 from Bean import HuffmanCoding as Hc
+from Utility import FileManager as Fm
 
 
 class Compressor:
