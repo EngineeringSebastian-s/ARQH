@@ -8,8 +8,7 @@ class Compressor:
 
     def Compress(self, filename, ext, new_ext):
         fm = Fm.FileManager(filename)
-        content = fm.read_file(ext)
-        hc = Hc.HuffmanCoding(content)
+        hc = Hc.HuffmanCoding(fm.read_file(ext))
         frequency = hc.make_frecuency()
         hc.build_tree(frequency)
         hc.visualize_tree()
@@ -24,16 +23,14 @@ class Compressor:
 
     def Descompress(self, filename, ext):
         fm = Fm.FileManager(filename)
-        content = fm.read_file_b(ext)
-        hc = Hc.HuffmanCoding(content)
-        print(content)
+        hc = Hc.HuffmanCoding(fm.read_file_b(ext))
+        print("Lectura en Binario:\n", hc.content)
         hc.decode()
-        print(hc.content)
+        print("Lectura en Representación Binaria:\n", hc.content)
         hc.rebuild_tree()
         hc.visualize_tree()
         hc.generate_codes_invert(hc.tree)
         hc.replace_codes_bit()
         fm.write_file(hc.content, ".txt")
         print("Diccionario inverso:\n", hc.codes)
-        print("Lectura en Binario:\n", content)
         print("Decodificación:\n", hc.content)
