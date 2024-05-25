@@ -10,7 +10,7 @@ class TextLabel(QLabel):
     def __init__(self):
         super().__init__()
         self.setAlignment(Qt.AlignCenter)
-        self.setText('\n\n Drop Text File Here \n\n')
+        self.setText('\n\n Suelta el archivo de texto aquí \n\n')
         self.setStyleSheet('''
             QLabel{
                 border: 4px dashed #aaa;
@@ -18,13 +18,13 @@ class TextLabel(QLabel):
                 word-wrap: break-word;
             }
         ''')
-        self.setWordWrap(True)  # Habilitar el ajuste de texto
+        self.setWordWrap(True)
 
 
 class Application(QWidget):
     def __init__(self):
         super().__init__()
-        self.setFixedSize(600, 400)  # Establecer tamaño fijo de la ventana
+        self.setFixedSize(600, 400)
         self.setAcceptDrops(True)
 
         mainLayout = QVBoxLayout()
