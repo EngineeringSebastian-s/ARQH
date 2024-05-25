@@ -123,7 +123,7 @@ class Application(QWidget):
             QMessageBox.information(self, "Acción",
                                     f"Archivo '{file_name}{file_ext}' comprimido con éxito en: {file_dir}")
         except Exception as e:
-            self.showAlert(f"Error al comprimir el archivo: {e}")
+            self.showAlert(f"Error al comprimir el archivo '{file_name}{file_ext}': {e}")
 
     def decompress(self):
         try:
@@ -135,4 +135,4 @@ class Application(QWidget):
             QMessageBox.information(self, "Acción",
                                     f"Archivo '{file_name}{file_ext}' descomprimido con éxito en: {file_dir}")
         except Exception as e:
-            self.showAlert(f"Error al descomprimir el archivo: {e}")
+            self.showAlert(f"Error al descomprimir el archivo '{file_name}{file_ext}': {e}")

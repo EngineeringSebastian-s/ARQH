@@ -1,6 +1,6 @@
 import os
 
-from graphviz import Digraph
+from graphviz import *
 
 from Bean.Node import Node
 
@@ -162,6 +162,17 @@ class HuffmanCoding:
                     add_nodes_edges(node.right, graph)
                     graph.edge(str(id(node)), str(id(node.right)), label="1")
 
-        graph = Digraph()
-        add_nodes_edges(self.tree, graph)
-        graph.render(os.path.join(os.getcwd(), "View", "huffman_tree"), format='png', view=True)
+        try:
+            graph = Digraph()
+            add_nodes_edges(self.tree, graph)
+            graph.render(os.path.join(os.getcwd(), "View", "huffman_tree"), format='png', view=True)
+            print("Renderizado exitoso.")
+        except ExecutableNotFound as e:
+            print(f"Error: No se encontró Graphviz. Asegúrate de que Graphviz esté instalado y en el PATH del "
+                  f"sistema.\nDetalles: {e}")
+        except CalledProcessError as e:
+            print(f"Error: Hubo un problema al ejecutar Graphviz.\nDetalles: {e}")
+        except RequiredArgumentError as e:
+            print(f"Error: Argumento requerido faltante.\nDetalles: {e}")
+        except Exception as e:
+            print(f"Error: Se produjo un error inesperado.\nDetalles: {e}")
