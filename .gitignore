@@ -44,3 +44,5 @@ ENV/
 boot_out.txt
 
 
+/DataCompressor/Logic/__pycache__
+/DataCompressor/Bean/__pycache__

@@ -13,7 +13,7 @@ class TextLabel(QLabel):
         self.setText('\n\n Suelta el archivo de texto aquí \n\n')
         self.setStyleSheet('''
             QLabel{
-                border: 4px dashed #aaa;
+                border: 4px dashed #aaa;PO
                 padding: 10px;
                 word-wrap: break-word;
             }

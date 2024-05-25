@@ -12,7 +12,7 @@ class Compressor:
         if hc.content != "":
             frequency = hc.make_frecuency()
             hc.build_tree(frequency)
-            hc.visualize_tree(root)
+            hc.visualize_tree()
             hc.generate_codes(hc.tree)
             hc.replace_codes()
             fm.create_file()
@@ -32,7 +32,7 @@ class Compressor:
             hc.decode()
             print("Lectura en Representación Binaria:\n", hc.content)
             hc.rebuild_tree()
-            hc.visualize_tree(root)
+            hc.visualize_tree()
             hc.generate_codes_invert(hc.tree)
             hc.replace_codes_bit()
             fm.write_file(hc.content)
