@@ -6,24 +6,24 @@ class Compressor:
     def __init__(self):
         pass
 
-    def Compress(self, filename, ext, new_ext):
-        fm = Fm.FileManager(filename)
-        hc = Hc.HuffmanCoding(fm.read_file(ext))
+    def Compress(self, filename, root):
+        fm = Fm.FileManager(filename, root)
+        hc = Hc.HuffmanCoding(fm.read_file())
         frequency = hc.make_frecuency()
         hc.build_tree(frequency)
         hc.visualize_tree()
         hc.generate_codes(hc.tree)
         hc.replace_codes()
-        fm.create_file(new_ext)
+        fm.create_file()
         hc.add_tree()
         hc.encoded()
         hc.byte_array()
-        fm.write_file_b(hc.content, new_ext)
+        fm.write_file_b(hc.content)
         print("Diccionario de codigos:\n", hc.codes)
 
-    def Descompress(self, filename, ext):
-        fm = Fm.FileManager(filename)
-        hc = Hc.HuffmanCoding(fm.read_file_b(ext))
+    def Descompress(self, filename, root):
+        fm = Fm.FileManager(filename, root)
+        hc = Hc.HuffmanCoding(fm.read_file_b())
         print("Lectura en Binario:\n", hc.content)
         hc.decode()
         print("Lectura en Representación Binaria:\n", hc.content)
@@ -31,6 +31,6 @@ class Compressor:
         hc.visualize_tree()
         hc.generate_codes_invert(hc.tree)
         hc.replace_codes_bit()
-        fm.write_file(hc.content, ".txt")
+        fm.write_file(hc.content)
         print("Diccionario inverso:\n", hc.codes)
         print("Decodificación:\n", hc.content)

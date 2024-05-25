@@ -1,6 +1,11 @@
-from Logic import Compressor as Cm
+import sys
+
+from PyQt5.QtWidgets import QApplication
+
+from View import Menu as Mn
 
 if __name__ == '__main__':
-    cm = Cm.Compressor()
-    # cm.Compress("Archivo", ".txt", ".slo")
-    cm.Descompress("Archivo", ".slo")
+    app = QApplication(sys.argv)
+    frame = Mn.Application()
+    frame.show()
+    sys.exit(app.exec_())
