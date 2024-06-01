@@ -81,13 +81,9 @@ class Application(QWidget):
 
     def set_text(self, file_path):
         try:
-            if file_path.endswith('.txt'):
-                with open(file_path, 'r') as file:
-                    content = file.read()
-            elif file_path.endswith('.slo'):
-                with open(file_path, 'rb') as file:
-                    content = file.read()
-                content = content.decode('utf-8', errors='ignore')  # Decodificar si es necesario
+            with open(file_path, 'rb') as file:
+                content = file.read()
+            content = content.decode('utf-8', errors='ignore')  # Decodificar si es necesario
             self.textViewer.setText(content)
         except Exception as e:
             raise e
