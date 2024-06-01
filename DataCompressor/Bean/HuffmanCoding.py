@@ -33,8 +33,7 @@ class HuffmanCoding:
             index += 1
         nodes.insert(index, new_node)
 
-    def build_tree(self, frecuency):
-        nodes = frecuency
+    def build_tree(self, nodes):
         while len(nodes) > 1:
             # Nodos de menor frecuencia
             left = nodes.pop(0)
@@ -99,8 +98,10 @@ class HuffmanCoding:
     # Metodo de Descompresión
     def decode(self):
         decode_content = ""
-        for byte in self.content[1:-1]:
+        for byte in self.content:
             decode_content += f'{byte:08b}'
+        padding_length = int(decode_content[:8], 2)
+        decode_content = decode_content[8:-padding_length]
         self.content = decode_content
 
     def generate_codes_invert(self, node):

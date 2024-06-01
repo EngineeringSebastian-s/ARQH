@@ -10,14 +10,14 @@ class FileManager:
     def read_file(self):
         try:
             with open(os.path.join(self.root, self.filename+".txt"), "r", encoding='utf-8') as file:
-                return file.read()
+                return file.read().rstrip()
         except OSError or FileNotFoundError as e:
             print("Error al leer el archivo:", e)
         return ""
 
     def write_file(self, content):
         try:
-            with open(os.path.join(self.root, self.filename+".txt"), 'w', encoding='utf-8') as file:
+            with open(os.path.join(self.root, self.filename+"_unslo.txt"), 'w', encoding='utf-8') as file:
                 file.write(content)
         except OSError or FileNotFoundError as e:
             print("Error al escribir en el archivo:", e)
