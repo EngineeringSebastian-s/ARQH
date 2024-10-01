@@ -8,7 +8,7 @@ lcd = I2cLcd(i2c, AddressOfLcd, 2, 16)
 
 if __name__ == '__main__':
     lcd.move_to(3,0)
-    lcd.putstr("PAULAAAA")
+    lcd.putstr("Holaaa")
     lcd.move_to(0,1)
     lcd.putstr("DONDE ESTASSS")
     sleep_ms(10000)
